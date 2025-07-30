@@ -46,7 +46,11 @@ const HomePage = () => {
         {notes.length > 0 && !loading && !isRateLimited && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {notes.map((note) => (
-              <NoteCard key={note._id} note={note} />
+              <NoteCard 
+                key={note._id} 
+                note={note} 
+                onDelete={(deletedId) => setNotes(notes.filter(n => n._id !== deletedId))}
+              />
             ))}
           </div>
         )}
